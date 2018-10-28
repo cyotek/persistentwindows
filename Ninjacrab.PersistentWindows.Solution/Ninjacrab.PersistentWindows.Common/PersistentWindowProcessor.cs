@@ -20,7 +20,21 @@ namespace Ninjacrab.PersistentWindows.Common
         private DesktopDisplayMetrics lastMetrics = null;
         private Hook windowProcHook;
 
-        public void Start()
+    private bool _enabled;
+
+    public bool Enabled
+    {
+      get { return _enabled; }
+      set { _enabled = value; }
+    }
+
+    public PersistentWindowProcessor()
+    {
+      _enabled = true;
+    }
+
+
+    public void Start()
         {
             lastMetrics = DesktopDisplayMetrics.AcquireMetrics();
             CaptureApplicationsOnCurrentDisplays(initialCapture: true);
@@ -202,6 +216,8 @@ namespace Ninjacrab.PersistentWindows.Common
         {            
             lock(displayChangeLock)
             {
+              if(_enabled || initialCapture)
+        { 
                 DesktopDisplayMetrics metrics = DesktopDisplayMetrics.AcquireMetrics();
                 if (displayKey == null)
                 {
@@ -265,6 +281,7 @@ namespace Ninjacrab.PersistentWindows.Common
                     Log.Trace("{0} windows recorded{1}{2}", apps.Count, Environment.NewLine, string.Join(Environment.NewLine, changeLog));
                 }
             }
+              }
         }
 
         private IEnumerable<SystemWindow> CaptureWindowsOfInterest()
@@ -328,6 +345,8 @@ namespace Ninjacrab.PersistentWindows.Common
         {
             lock (displayChangeLock)
             {
+              if(_enabled)
+        { 
                 DesktopDisplayMetrics metrics = DesktopDisplayMetrics.AcquireMetrics();
                 if (displayKey == null)
                 {
@@ -377,6 +396,7 @@ namespace Ninjacrab.PersistentWindows.Common
                     }
                 }
             }
+              }
         }
 
         public void Dispose()

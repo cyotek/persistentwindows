@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Ninjacrab.PersistentWindows.Common;
 using Ninjacrab.PersistentWindows.WpfShell;
 
 namespace Ninjacrab.PersistentWindows.SystrayShell
@@ -12,6 +13,14 @@ namespace Ninjacrab.PersistentWindows.SystrayShell
         {
             InitializeComponent();
         }
+
+      public SystrayForm(PersistentWindowProcessor processor)
+      :this()
+    {
+      _processor = processor;
+    }
+
+    private readonly PersistentWindowProcessor _processor;
 
         private void DiagnosticsToolStripMenuItemClickHandler(object sender, EventArgs e)
         {
@@ -36,5 +45,10 @@ namespace Ninjacrab.PersistentWindows.SystrayShell
             Application.Exit();
         }
 
+    private void enabledToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      _processor.Enabled = !_processor.Enabled;
+      enabledToolStripMenuItem.Checked = _processor.Enabled;
     }
+  }
 }
