@@ -96,13 +96,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\ManagedWinapi.0.3\ManagedWinapiNativeHelper.dll">
-      <Link>ManagedWinapiNativeHelper.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="..\Resources\Oxygen-Icons.org-Oxygen-Status-media-playlist-repeat.ico">
       <Link>Oxygen-Icons.org-Oxygen-Status-media-playlist-repeat.ico</Link>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\lib\ManagedWinapiNativeHelper.dll">
+      <Link>ManagedWinapiNativeHelper.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
