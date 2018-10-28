@@ -1,0 +1,13 @@
+bin/
+obj/
+.vs/
+packages/
+
+*.user
+*.suo
+Ninjacrab.PersistentWindows.Solution/lib/PersistentWindows.exe
+Ninjacrab.PersistentWindows.Solution/lib/NLog.dll
+Ninjacrab.PersistentWindows.Solution/lib/Ninjacrab.PersistentWindows.WpfShell.dll
+Ninjacrab.PersistentWindows.Solution/lib/Ninjacrab.PersistentWindows.Common.dll
+Ninjacrab.PersistentWindows.Solution/lib/Microsoft.Practices.Prism.SharedInterfaces.dll
+Ninjacrab.PersistentWindows.Solution/lib/Microsoft.Practices.Prism.Mvvm.dll
